@@ -1,8 +1,3 @@
-[submodule "OCA/partner-contact"]
-	path = OCA/partner-contact
-	url = git@github.com:OCA/partner-contact.git
-	branch = 13.0
-
 [submodule "OCA/report-print-send"]
 	path = OCA/report-print-send
 	url = git@github.com:OCA/report-print-send.git
