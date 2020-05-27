@@ -1,0 +1,4 @@
+[submodule "OCA/l10n-netherlands"]
+	path = OCA/l10n-netherlands
+	url = git@github.com:OCA/l10n-netherlands.git
+	branch = 13.0
