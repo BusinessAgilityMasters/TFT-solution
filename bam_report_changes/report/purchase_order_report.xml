@@ -1,0 +1,9 @@
+<odoo>                                
+  <data>                                    
+    <template id="report_purchase_order_TFT" inherit_id="purchase.report_purchasequotation_document">
+           <xpath expr="//div[hasclass('page')]/h2" position="replace">
+               <h2>Purchase Order <span t-field="o.name"/></h2>
+            </xpath>            	
+    </template>                                
+  </data>                            
+</odoo>

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bam_sale_order_prod_list,access_bam_sale_order_prod_list,model_bam_sale_order_prod_list,base.group_user,1,1,1,1

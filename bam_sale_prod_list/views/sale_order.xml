@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="bam_sale_prod_list.action_open_orderproduction" model="ir.actions.act_window">
+            <field name="context">{'default_x_sale_order_id': [active_id],
+                'search_default_x_sale_order_id':[active_id]}
+            </field>
+            <field name="name">Production</field>
+            <field name="res_model">mrp.production</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="bam_sale_prod_list.mrp_production_tree_search"/>
+        </record>
+
+
+        <record id="bam_sale_prod_list.sale_order_form" model="ir.ui.view">
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/header" position="inside">
+                    <button name="update_production_order"
+                            string="Update Production"
+                            type="object"
+                            attrs="{'invisible':[('state','!=','sale')]}"/>
+                </xpath>
+
+                <xpath expr="//button[@name='action_view_invoice']" position="before">
+                    <button class="oe_inline oe_stat_button"
+                            icon="fa-list-alt"
+                            name="%(bam_sale_prod_list.action_open_orderproduction)d" type="action">
+                        <field name="x_mrp_production_qty" string="Production" widget="statinfo"/>
+                    </button>
+                </xpath>
+
+                <xpath expr="//page//field[@name='name']" position="after">
+                    <hr/>
+                    <field name="x_is_compose_sol" invisible="1"/>
+                    <field name="x_sale_order_line_ids" attrs="{'invisible': [('x_is_compose_sol', '!=', True)]}"/>
+                </xpath>
+
+                <field name="invoice_lines" position="replace">
+                    <field name="invoice_lines" readonly="1"/>
+                </field>
+
+                <xpath expr="//tree/field[@name='tax_id']" position="after">
+                    <field name="x_calc_total"/>
+                </xpath>
+
+                <!-- <xpath expr="//page[@name='order_lines']//tree//control" position="replace">
+                       <control>
+                            <create name="add_product_control" string="Add a product"/>
+                            <create name="add_product_line_control" string="Add line with bom" 
+                            context="{'open_product_oline': True}"
+                                   groups="product.group_product_variant"/>
+                            <create name="add_product_configurator_control" string="Configure a product" context="{'open_product_configurator': True}"
+                                   groups="product.group_product_variant"/>
+                            <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                            <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                       </control>
+               </xpath> -->
+
+               <xpath expr="//page[@name='order_lines']//tree" position="replace">
+                   <tree string="Sales Order Lines"
+                         decoration-info="(not display_type and invoice_status == 'to invoice')">
+                       <control>
+                            <create name="add_product_control" string="Add a product"/>
+                            <create name="add_product_configurator_control" string="Configure a product" context="{'open_product_configurator': True}"
+                                   groups="product.group_product_variant"/>
+                            <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                            <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                       </control>
+                       <field name="sequence" widget="handle"/>
+                       <field name="product_template_id"/>
+                       <!-- &lt;!&ndash; We do not display the type because we don't want the user to be bothered with that information if he has no section or note. &ndash;&gt; -->
+                       <field name="display_type" invisible="1"/>
+                       <field name="product_updatable" invisible="1"/>
+                       <field name="product_id"
+                              attrs="{                                             'readonly': [('product_updatable', '=', False)],                                             'required': [('display_type', '=', False)],                                         }"
+                              force_save="1"
+                              context="{                                             'partner_id': parent.partner_id,                                             'quantity': product_uom_qty,                                             'pricelist': parent.pricelist_id,                                             'uom':product_uom,                                             'company_id': parent.company_id,                                             'default_lst_price': price_unit,                                             'default_description_sale': name                                         }"/>
+                       <field name="product_custom_attribute_value_ids" invisible="1"/>
+                       <field name="product_no_variant_attribute_value_ids" invisible="1"/>
+                       <field name="name" widget="section_and_note_text"/>
+                       <field name="product_uom_qty" string="Ordered Qty"
+                              context="{                                             'partner_id': parent.partner_id,                                             'quantity': product_uom_qty,                                             'pricelist': parent.pricelist_id,                                             'uom': product_uom,                                             'company_id': parent.company_id                                         }"/>
+                       <field name="qty_delivered"
+                              attrs="{                                             'column_invisible': [('parent.state', 'not in', ['sale', 'done'])],                                             'readonly': [('qty_delivered_method', '!=', 'manual')]                                         }"/>
+                       <field name="qty_delivered_manual" invisible="1"/>
+                       <field name="qty_delivered_method" invisible="1"/>
+                       <field name="qty_invoiced"
+                              attrs="{'column_invisible': [('parent.state', 'not in', ['sale', 'done'])]}"/>
+                       <field name="qty_to_invoice" invisible="1"/>
+                       <field name="product_uom"
+                              attrs="{                                             'readonly': [('state', 'in', ('sale','done', 'cancel'))],                                             'required': [('display_type', '=', False)],                                         }"
+                              context="{'company_id': parent.company_id}" groups="uom.group_uom"
+                              options="{&quot;no_open&quot;: True}"/>
+                       <field name="analytic_tag_ids" groups="analytic.group_analytic_tags" widget="many2many_tags"/>
+                       <field name="price_unit" attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/>
+                       <field name="tax_id" widget="many2many_tags" options="{'no_create': True}"
+                              domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id)]"
+                              attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/>
+                       <field name="discount" groups="sale.group_discount_per_so_line"/>
+                       <field name="x_calc_total"/>
+                       <field name="price_subtotal" widget="monetary"
+                              groups="account.group_show_line_subtotals_tax_excluded"/>
+                       <field name="price_total" widget="monetary"
+                              groups="account.group_show_line_subtotals_tax_included"/>
+                       <field name="state" invisible="1"/>
+                       <field name="invoice_status" invisible="1"/>
+                       <field name="customer_lead" invisible="1"/>
+                       <field name="currency_id" invisible="1"/>
+                   </tree>
+               </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

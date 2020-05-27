@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="id_category_credit_check" model="res.partner.id_category">
+        <field name="code">CHECK</field>
+        <field name="name">Credit check number</field>
+    </record>
+</odoo>

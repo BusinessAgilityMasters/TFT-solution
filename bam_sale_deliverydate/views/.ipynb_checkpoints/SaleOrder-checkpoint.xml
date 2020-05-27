@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<odoo>
+    <data>
+    
+    
+        <record id="bam_sale_deliverydate.view_order_form" model="ir.ui.view">
+            <field name="name">bam_sale_deliverydate.view_order_form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                   <field name="validity_date" position="after">
+                        <field name="x_delivery_date" />
+                   </field>
+                </data>
+           </field>
+        </record>
+        
+        <record id="bam_sale_deliverydate.view_sale_order_calendar" model="ir.ui.view" >
+            <field name="name">bam_sale_deliverydate.view_sale_order_calendar</field>
+            <field name="model">sale.order</field>            
+            <field name="priority">10</field>
+            <field name="arch" type="xml">              
+                <calendar string="Sales Orders" color="state" date_start="x_calendar_date">
+                    <field name="partner_id"/>
+                    <field name="name" />
+                    <field name="amount_total" widget="monetary"/>
+                </calendar>       
+            </field>       
+        
+        </record>
+        
+        
+        
+      
+       
+        
+        
+    </data>
+</odoo>

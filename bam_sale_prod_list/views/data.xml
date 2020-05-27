@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="bam_sale_prod_list.stock_location_route_eto"  model="stock.location.route">
+            <field name="name">Compose SO</field>
+            <field name="product_selectable">True</field>
+            <field name="sale_selectable">True</field>
+        </record>
+
+        <record id="bam_sale_prod_list.mrp_workcenter_gathering"  model="mrp.workcenter">
+            <field name="name">Verzamelen</field>
+        </record>
+
+        <record id="bam_sale_prod_list.mrp_routing"  model="mrp.routing">
+            <field name="name">Verzamelen</field>
+        </record>
+
+        <record id="bam_sale_prod_list.mrp_routing_workcenter_0" model="mrp.routing.workcenter">
+            <field name="routing_id" ref="bam_sale_prod_list.mrp_routing"/>
+            <field name="workcenter_id" ref="bam_sale_prod_list.mrp_workcenter_gathering"/>
+            <field name="name">Verzamelen</field>
+            <field name="sequence">1</field>
+        </record>
+    </data>
+</odoo>
