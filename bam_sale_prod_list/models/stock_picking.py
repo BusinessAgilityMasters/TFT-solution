@@ -1,6 +1,8 @@
-# -*- coding: utf-8 -*-
-
 from odoo import models, fields, api
+from odoo.exceptions import except_orm, ValidationError
+
+import datetime
+import pdb
 
 
 class StockPicking(models.Model):
@@ -31,3 +33,7 @@ class StockPicking(models.Model):
 					wo.open_tablet_view()
 					wo.do_finish()
 				move.created_production_id.button_mark_done()
+
+
+
+

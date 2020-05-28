@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="bam_sale_prod_list.mrp_production_tree_search"  model="ir.ui.view">
-        <field name="name">bam_sale_prodlist.mrp_production_tree_search</field>
-        <field name="model">mrp.production</field>
-        <field name="arch" type="xml">
-            <search string="Production">
-                <field name="x_sale_order_id"/>
-                <field name="name"/>
-            </search>
-        </field>
-    </record>
+            <field name="name">bam_sale_prodlist.mrp_production_tree_search</field>
+            <field name="model">mrp.production</field>
+            <field name="arch" type="xml">
+                <search string="Production">
+                    <field name="x_sale_order_id"/>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
 
      <record id="bam_sale_prod_list.mrp_production_form" model="ir.ui.view">
          <field name="model">mrp.production</field>
@@ -21,4 +22,6 @@
              </field>
         </field>
      </record>
+
+
  </odoo>

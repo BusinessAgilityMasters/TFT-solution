@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../oi1_import_mail_mass_mailing_html/.idea/oi1_import_mail_mass_mailing_html.iml" filepath="$PROJECT_DIR$/../oi1_import_mail_mass_mailing_html/.idea/oi1_import_mail_mass_mailing_html.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../oi1_product_description_html/.idea/oi1_product_description_html.iml" filepath="$PROJECT_DIR$/../oi1_product_description_html/.idea/oi1_product_description_html.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../oi1_reporting_voogt/.idea/oi1_reporting_voogt.iml" filepath="$PROJECT_DIR$/../oi1_reporting_voogt/.idea/oi1_reporting_voogt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../oi1_sale_date/.idea/oi1_sale_date.iml" filepath="$PROJECT_DIR$/../oi1_sale_date/.idea/oi1_sale_date.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/oi1_sale_deliverydate.iml" filepath="$PROJECT_DIR$/.idea/oi1_sale_deliverydate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../oi1_sale_quotation_split/.idea/oi1_sale_quotation_split.iml" filepath="$PROJECT_DIR$/../oi1_sale_quotation_split/.idea/oi1_sale_quotation_split.iml" />
+    </modules>
+  </component>
+</project>

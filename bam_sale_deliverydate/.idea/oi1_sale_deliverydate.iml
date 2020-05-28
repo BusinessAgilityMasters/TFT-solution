@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="oi1_sale_quotation_split" />
+    <orderEntry type="module" module-name="oi1_sale_date" />
+    <orderEntry type="module" module-name="oi1_product_description_html" />
+    <orderEntry type="module" module-name="oi1_import_mail_mass_mailing_html" />
+    <orderEntry type="module" module-name="oi1_reporting_voogt" />
+  </component>
+</module>

@@ -2,17 +2,17 @@
 <odoo>
     <data>
         <record id="bam_sale_prod_list.stock_location_route_eto"  model="stock.location.route">
-            <field name="name">Compose SO</field>
-            <field name="product_selectable">True</field>
-            <field name="sale_selectable">True</field>
+                <field name="name">Compose SO</field>
+                <field name="product_selectable">True</field>
+                <field name="sale_selectable">True</field>
         </record>
 
         <record id="bam_sale_prod_list.mrp_workcenter_gathering"  model="mrp.workcenter">
-            <field name="name">Verzamelen</field>
+                <field name="name">Verzamelen</field>
         </record>
 
-        <record id="bam_sale_prod_list.mrp_routing"  model="mrp.routing">
-            <field name="name">Verzamelen</field>
+          <record id="bam_sale_prod_list.mrp_routing"  model="mrp.routing">
+                <field name="name">Verzamelen</field>
         </record>
 
         <record id="bam_sale_prod_list.mrp_routing_workcenter_0" model="mrp.routing.workcenter">
@@ -21,5 +21,7 @@
             <field name="name">Verzamelen</field>
             <field name="sequence">1</field>
         </record>
+
     </data>
+
 </odoo>

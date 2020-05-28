@@ -1,12 +1,10 @@
-# -*- coding: utf-8 -*-
-
 from odoo import models, fields, api
 from odoo.exceptions import except_orm, ValidationError
 
 
 class bam_salesorder(models.Model):
+       
     _inherit = 'sale.order'
-
     x_delivery_date = fields.Datetime(string="Planned Delivery date", default=fields.Datetime.now())
     x_calendar_date = fields.Datetime(compute="_compute_calendar_date");
     
@@ -40,3 +38,8 @@ class bam_salesorder(models.Model):
                     if stock_picking.state not in ['done','cancel']:
                         stock_picking.scheduled_date = so.x_delivery_date
                         stock_picking.min_date = so.x_delivery_date;
+           
+    
+    
+               
+    

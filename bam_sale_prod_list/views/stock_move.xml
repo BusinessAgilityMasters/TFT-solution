@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-   <record id="bam_sale_prod_list.move_form" model="ir.ui.view">
-       <field name="model">stock.move</field>
-       <field name="inherit_id" ref="stock.view_move_form" />
-       <field name="arch" type="xml">
-           <field name="product_id" position="after" >
-               <field name="created_production_id" />
-           </field>
+    <data>
+       <record id="bam_sale_prod_list.move_form" model="ir.ui.view">
+         <field name="model">stock.move</field>
+         <field name="inherit_id" ref="stock.view_move_form" />
+         <field name="arch" type="xml">
+             <field name="product_id" position="after" >
+                 <field name="created_production_id" />
+             </field>
 
-           <xpath expr="//group" position="after" >
-              <group name="partlist"  >
-                   <field name="x_sale_order_line_ids">
-                   </field>
-              </group>
-           </xpath>
-       </field>
-   </record>
-</odoo>
+            <xpath expr="//group" position="after" >
+                <group name="partlist"  >
+                    <field name="x_sale_order_line_ids">
+                    </field>
+                </group>
+             </xpath>
+        </field>
+        </record>
+    </data>
+ </odoo>
